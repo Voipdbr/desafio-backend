@@ -22,15 +22,15 @@ Route.get('/userDec', 'UserController.get2');
 
 Route.get('/user/:id', 'UserController.findById');
 
-Route.post('/user/create', 'UserController.create');
+Route.post('/createUser', 'UserController.create');
 
-Route.put('/user/update/:id', 'UserController.update');
+Route.put('/updateUser/:id', 'UserController.update');
 
-Route.delete('/user/delete/:id', 'UserController.delete');
+Route.delete('/deleteUser/:id', 'UserController.delete');
 
-Route.get('/user/saldo', 'UserController.getSal');
+Route.get('/saldoUser', 'UserController.getSal');
 
-Route.post('/user/createSaldo', 'UserController.createSaldo');
+Route.post('/createSaldo', 'UserController.createSaldo');
 
 Route.get('/debitos', 'MovimentoController.get');
 
@@ -42,6 +42,6 @@ Route.put('/updateDebitos/:id', 'MovimentoController.update');
 
 Route.delete('/deleteDebitos/:id', 'MovimentoController.delete');
 
-Route.get('/debitos/somaDebitos', 'MovimentoController.getSoma');
+Route.get('/somaDebitos', 'MovimentoController.getSoma');
 
 Route.get('/csv', 'MovimentoController.csv');
