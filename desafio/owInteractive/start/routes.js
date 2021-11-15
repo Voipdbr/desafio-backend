@@ -16,34 +16,32 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
-Route.get('/get', 'UserController.get');
+Route.get('/user', 'UserController.get');
 
-Route.get('/get2', 'UserController.get2');
+Route.get('/userDec', 'UserController.get2');
 
-Route.get('/get/:id', 'UserController.findById');
+Route.get('/user/:id', 'UserController.findById');
 
-Route.post('/create', 'UserController.create');
+Route.post('/user/create', 'UserController.create');
 
-Route.put('/update/:id', 'UserController.update');
+Route.put('/user/update/:id', 'UserController.update');
 
-Route.delete('/delete/:id', 'UserController.delete');
+Route.delete('/user/delete/:id', 'UserController.delete');
 
-Route.get('/debts', 'MovimentoController.get');
+Route.get('/user/saldo', 'UserController.getSal');
 
-Route.get('/debts2', 'MovimentoController.get');
+Route.post('/user/createSaldo', 'UserController.createSaldo');
 
-Route.get('/debts/:id', 'MovimentoController.findById');
+Route.get('/debitos', 'MovimentoController.get');
 
-Route.post('/debtsExec', 'MovimentoController.create');
+Route.get('/debitos/:id', 'MovimentoController.findById');
 
-Route.put('/debtsUpdate/:id', 'MovimentoController.update');
+Route.post('/criarDebitos', 'MovimentoController.create');
 
-Route.delete('/debtsDelete/:id', 'MovimentoController.delete');
+Route.put('/updateDebitos/:id', 'MovimentoController.update');
+
+Route.delete('/deleteDebitos/:id', 'MovimentoController.delete');
+
+Route.get('/debitos/somaDebitos', 'MovimentoController.getSoma');
 
 Route.get('/csv', 'MovimentoController.csv');
-
-Route.get('/user/salario', 'UserController.getSal');
-
-Route.get('/soma', 'MovimentoController.getSoma');
-
-Route.post('/createSaldo', 'UserController.createSaldo');
