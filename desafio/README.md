@@ -157,9 +157,11 @@ Ao executar o endpoint o server crasha erro (ERR_HTTP_HEADERS_SENT).
 
 Para reiniciar o server, pegue qualquer controller de um CTRL + S ou desligue o server e execute o comando (npm start) novamente.
 
+---
+
 # Questões solucionadas
 
-- Etapa 1
+## - Etapa 1
 
 ✔ Criar um endpoint onde é cadastrado um usuário.
 
@@ -169,7 +171,7 @@ Para reiniciar o server, pegue qualquer controller de um CTRL + S ou desligue o 
 
 ✔ Criar um endpoint para excluir um usuário através do seu id.
 
-- Etapa 2
+## - Etapa 2
 
 ✔ Criar um endpoint ou endpoint`s onde é possível associar uma operação de débito, crédito ou estorno para o usuário;
  
@@ -179,7 +181,7 @@ Para reiniciar o server, pegue qualquer controller de um CTRL + S ou desligue o 
 
 [+-]✔ Criar um endpoint onde é retornado um arquivo no formato (csv) com 3 tipos de filtros para as movimentações;
 
-- Etapa 3
+## - Etapa 3
 
 ✔ Adicionar dentro do usuário um campo para saldo inicial, e criar um endpoint para alterar esse valor;
 
@@ -191,7 +193,7 @@ Para reiniciar o server, pegue qualquer controller de um CTRL + S ou desligue o 
 
 ❌ No endpoint que exporta o arquivo CSV criar um cabeçalho com os dados do cliente e o seu saldo atual;
 
-- Etapa 4
+## - Etapa 4
 
 ✔ Criar validações com base na Request;
 
