@@ -60,35 +60,35 @@ Os endpoint's da aplicação estão a seguir.
 
 ```
 
-Usuário: http://localhost:3333/user // método(GET)
+Usuário: http://localhost:3333/user || método(GET)
 
-Usuário Descrescente: http://localhost:3333/userDec // método(GET)
+Usuário Descrescente: http://localhost:3333/userDec || método(GET)
 
-Usuário por id: http://localhost:3333/user/{id} // método(GET)
+Usuário por id: http://localhost:3333/user/{id} || método(GET)
 
-Criar usuário: http://localhost:3333/createUser // método(POST)
+Criar usuário: http://localhost:3333/createUser || método(POST)
 
-Atualizar usuário: http://localhost:3333/updateUser/{id} // método(PUT)
+Atualizar usuário: http://localhost:3333/updateUser/{id} || método(PUT)
 
-Criar saldo do usuário: http://localhost:3333/createSaldo // método(POST)
+Criar saldo do usuário: http://localhost:3333/createSaldo || método(POST)
 
-Saldo do usuário: http://localhost:3333/saldoUser // método(GET)
+Saldo do usuário: http://localhost:3333/saldoUser || método(GET)
 
-Criar movimentação do usuário: http://localhost:3333/criarDebitos // método(POST)
+Criar movimentação do usuário: http://localhost:3333/criarDebitos || método(POST)
 
-Movimentação do usuário: http://localhost:3333/debitos // método(GET)
+Movimentação do usuário: http://localhost:3333/debitos || método(GET)
 
-Movimentação por id do usuário: http://localhost:3333/debitos/{id} // método(GET)
+Movimentação por id do usuário: http://localhost:3333/debitos/{id} || método(GET)
 
-Atualizar movimentação do usuário: http://localhost:3333/updateDebitos/{id} // método(PUT)
+Atualizar movimentação do usuário: http://localhost:3333/updateDebitos/{id} || método(PUT)
 
-Soma da movimentação e saldo do usuário: http://localhost:3333/somaDebitos // método(GET)
+Soma da movimentação e saldo do usuário: http://localhost:3333/somaDebitos || método(GET)
 
-Deletar usuário: http://localhost:3333/deleteUser/{id} // método(DELETE)
+Deletar usuário: http://localhost:3333/deleteUser/{id} || método(DELETE)
 
-Deletar movimentação do usuário: http://localhost:3333/deleteDebitos/{id} // método(DELETE)
+Deletar movimentação do usuário: http://localhost:3333/deleteDebitos/{id} || método(DELETE)
 
-Exportar dados do usuário para arquivo CSV: http://localhost:3333/csv // método(GET)
+Exportar dados do usuário para arquivo CSV: http://localhost:3333/csv || método(GET)
 
 ```
 
