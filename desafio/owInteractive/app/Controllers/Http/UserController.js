@@ -76,27 +76,21 @@ class UserController {
 
   async delete ({ params, response }) {
 
-    const user = await User.findBy('id', params.id);
-
     const saldo = await User.query().from('salarios').innerJoin('movimento_controllers').innerJoin('user_controllers').select('*').fetch();
 
-    const deletar = await user.delete();
+    const user = await User.findBy('id', params.id);
 
-    saldo.toJSON().forEach((ids) => {
-      if(ids.id_user == Number(params.id) && ids.id_users == Number(params.id) && ids.saldoinicial == 0 && ids.debito == 0 && ids.credito == 0 && ids.estorno == 0){
+    saldo.toJSON().forEach(async (ids) => {
+      if(ids.id_users == Number(params.id)){
       response.status(200).json({
         status: 200,
         message: "O usuário foi deletado com sucesso!",
-        deletado: deletar
+        deletado: await user.delete()
         });
-
-      }else{
-        response.status(404).json({
-          status: 404,
-          message: "O usuário ainda deve ter algum saldo na conta!"
-        })
       }
       })
+
+      return true;
   }
 
   async getSal ({response}) {
