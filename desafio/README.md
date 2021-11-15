@@ -99,6 +99,7 @@ Seguindo isso você terá que ter estes parâmetros especificos para executar.
 ```
 
 Criar usuário:
+
 (POST)
 {
 	"name": "TESTE",
@@ -107,6 +108,7 @@ Criar usuário:
 }
 
 Atualizar usuário:
+
 (PUT)
 {
 	"name": "TESTE",
@@ -114,6 +116,7 @@ Atualizar usuário:
 }
 
 Criar saldo do usuário:
+
 (POST)
 {
 	"id_users": {ID DO USUÁRIO},
@@ -122,6 +125,7 @@ Criar saldo do usuário:
 
 
 Criar movimentação do usuário:
+
 (POST)
 {
 	"id_user": {ID DO USUÁRIO},
@@ -131,6 +135,7 @@ Criar movimentação do usuário:
 }
 
 Atualizar movimentação do usuário:
+
 (PUT)
 {
 	"debito": 0,
