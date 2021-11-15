@@ -2,7 +2,7 @@
 
 const debts = use('App/Models/MovimentoController')
 const User = use('App/Models/UserController')
-const { Parser } = require('json2csv');
+const json2csv = require('json2csv').parse
 
 class MovimentoController {
   async get ({response}) {
@@ -46,7 +46,7 @@ class MovimentoController {
       }else{
         response.status(404).json({
           status: 404,
-          message: "Falta algo!!!"
+          message: "O id_user não existe!!!"
         })
       }
       }
@@ -90,18 +90,6 @@ class MovimentoController {
     const datas = all.map(dates => dates.created_at)
     const data = []
 
-    data.push([
-    'id',
-    'id_user',
-    'debito',
-    'credito',
-    'estorno',
-    'created_at',
-    'updated_at'
-    ])
-
-    const json2csv = new Parser({datas: data})
-
     for(let i = 0; i <= counter; i++){
 
     const data1 = new Date();
@@ -118,21 +106,22 @@ class MovimentoController {
       const debtdata = await debts.query().where('created_at', datafim).fetch();
 
       debtdata.toJSON().forEach((user) => {
-        data.push([
-          user.id,
-          user.id_user,
-          user.debito,
-          user.credito,
-          user.estorno,
-          user.created_at,
-          user.updated_at
-        ])
+        data.push({
+          id: user.id,
+          user: user.id_user,
+          debito: user.debito,
+          credito: user.credito,
+          estorno: user.estorno,
+          created_at: user.created_at,
+          updated_at: user.updated_at
+        })
       })
-    console.log(data)
 
-    const csvString = json2csv.parse(data)
-    response.attachment('data.csv');
-    response.status(200).send(csvString);
+      const fields = Object.keys(data)
+      const csv = json2csv({data: data, fields: fields})
+      response.attachment('data.csv');
+      response.header('Content-type', 'text/csv');
+      response.status(200).send(csv);
 
     }else{
 
@@ -166,12 +155,12 @@ class MovimentoController {
     const saldo = await debts.query().from('salarios').innerJoin('movimento_controllers').innerJoin('user_controllers').select('*').fetch();
 
     const data = [];
-    
-    const all = saldo.toJSON().forEach((debitos) => {
+
+    saldo.toJSON().forEach((debitos) => {
       if(debitos.id_users == debitos.id_user){
         data.push({
           id: debitos.id_user,
-          saldo: debitos.saldoinicial,
+          saldoinicial: debitos.saldoinicial,
           debito: debitos.debito,
           credito: debitos.credito,
           estorno: debitos.estorno,
@@ -180,14 +169,14 @@ class MovimentoController {
       }else{
         data.push({
           id: debitos.id_user,
-          saldo: debitos.saldoinicial,
           debito: debitos.debito,
           credito: debitos.credito,
           estorno: debitos.estorno,
+          Saldo: (debitos.debito + debitos.credito + debitos.estorno)
         })
       }
     });
-    
+
     response.status(200).json({
       data: data
     })

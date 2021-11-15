@@ -1,6 +1,7 @@
 'use strict'
 
 const User = use('App/Models/UserController')
+const Salario = use('App/Models/Salario')
 
 class UserController {
   async get () {
@@ -27,10 +28,30 @@ class UserController {
 
   }
 
-  async create ({ request }) {
-    const data = request.only(['name', 'email']);
+  async create ({ request, response }) {
+    const data = request.only(['name', 'email', 'idade']);
+    const data2 = request.only(['name', 'email']);
 
-    const user = await User.create(data);
+    if(data.idade >= 18){
+    const user = await User.create(data2);
+    console.log(data.idade)
+    response.status(200).json({
+      status: 200,
+      message: "Usuário criado com sucesso!",
+      data: user
+    })
+    }else{
+      response.status(404).json({
+        status: 404,
+        message: "Você é menor de idade!"
+      })
+    }
+  }
+
+  async createSaldo ({ request }) {
+    const data = request.only(['id_users', 'saldoinicial']);
+
+    const user = Salario.create(data);
 
     return user
   }
@@ -55,19 +76,18 @@ class UserController {
 
   async delete ({ params, response }) {
 
-    const user = await User.findOrFail(params.id);
+    const user = await User.findBy('id', params.id);
 
     const saldo = await User.query().from('salarios').innerJoin('movimento_controllers').innerJoin('user_controllers').select('*').fetch();
 
-    console.log(saldo.toJSON())
-    saldo.toJSON().forEach((ids) => {
-      const paramid = Number(params.id);
+    const deletar = await user.delete();
 
+    saldo.toJSON().forEach((ids) => {
       if(ids.id_user == Number(params.id) && ids.id_users == Number(params.id) && ids.saldoinicial == 0 && ids.debito == 0 && ids.credito == 0 && ids.estorno == 0){
       response.status(200).json({
         status: 200,
         message: "O usuário foi deletado com sucesso!",
-        deletado: "deletadooo"
+        deletado: deletar
         });
 
       }else{
@@ -85,8 +105,8 @@ class UserController {
 
     const data = [];
 
-    const all = saldo.toJSON().forEach((user) => {
-      if(user.id_user != user.id){
+    saldo.toJSON().forEach((user) => {
+      if(user.id_users != user.id){
         data.push({
           id: user.id,
           name: user.name,

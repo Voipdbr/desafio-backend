@@ -45,3 +45,5 @@ Route.get('/csv', 'MovimentoController.csv');
 Route.get('/user/salario', 'UserController.getSal');
 
 Route.get('/soma', 'MovimentoController.getSoma');
+
+Route.post('/createSaldo', 'UserController.createSaldo');
