@@ -1,26 +1,27 @@
 'use strict'
 
-const Merger = use('App/Models/MergeInfoController')
 const Debts = use('App/Models/MovimentoController')
 const User = use('App/Models/UserController')
 
-
 class MergeInfoController {
-  async get ({request, response}) {
+    async get () {
+      const counter = await User.query().select('name').getCount();
 
-    //const debts = await Debts.all();
-    //const user = await User.all();
-    //const put = await Merger.all();
-    //const users = await response.json({user})
-    //const debtss = await response.json({debts})
-    const data = await request.only(['name', 'email', 'debito', 'credito', 'estorno']);
+      //const user = await User.all();
+      //const put = await Merger.all();
+      //const users = await response.json({user})
+      //const debtss = await response.json({debts})
 
-    const userrr = await Merger.create(data);
+      const debts = Debts.query().from('movimento_controllers').select('debito', 'credito', 'estorno').fetch();
+      const user = await User.query().from('user_controllers').select(debts).fetch();
 
-    return (userrr, {
-      console: console.log(userrr)
-    });
-  }
+      return user;
+      //const nomes = user.rows.map(nome => nome.name);
+        // const emails = user.rows.email;
+        // const debitos = debts.rows.debito;
+        // const creditos = debts.rows.credito;
+        // const estornos = debts.rows[i].estorno;
+    }
 }
 
 module.exports = MergeInfoController

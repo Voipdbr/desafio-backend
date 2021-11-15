@@ -18,7 +18,7 @@ const Route = use('Route')
 
 Route.get('/get', 'UserController.get');
 
-Route.get('/get2', 'UserController.get');
+Route.get('/get2', 'UserController.get2');
 
 Route.get('/get/:id', 'UserController.findById');
 
@@ -40,6 +40,8 @@ Route.put('/debtsUpdate/:id', 'MovimentoController.update');
 
 Route.delete('/debtsDelete/:id', 'MovimentoController.delete');
 
-Route.get('/merger', 'MergeInfoController.get');
+Route.get('/csv', 'MovimentoController.csv');
 
-Route.post('/merger', 'MergeInfoController.get');
+Route.get('/user/salario', 'UserController.getSal');
+
+Route.get('/soma', 'MovimentoController.getSoma');
