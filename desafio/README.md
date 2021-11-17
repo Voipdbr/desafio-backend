@@ -52,6 +52,12 @@ Ou se você tiver instalado a instância global do adonis você pode executar co
 adonis serve --dev
 ```
 
+- 3 - Testar com insomnia
+
+Para fazer os testes, eu utilizei o software insomnia, você pode utilizar o da sua preferência, mas os endpoint's já estão totalmente aplicados na config presente na pasta (insomnia).
+
+Apenas faça o import do json para o insomnia, e onde tiver {}, faça a troca para o dado desejado, as chaves tem na URL e no JSON presente nos (POST'S e GET'S).
+
 ---
 
 # Endpoint's
