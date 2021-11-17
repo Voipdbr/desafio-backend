@@ -4,7 +4,7 @@
 
 # Projeto owInteractive
 
-O projeto em questão em questão é um desafio que participei, foi dado a possibilidade de usar umas dessas linguagens [PHP ou NodeJS].
+O projeto em questão é um desafio que participei, foi dado a possibilidade de usar umas dessas linguagens [PHP ou NodeJS].
 
 E os diferencias do projeto é que você deveria utilizar uma framework especifica para cada linguagem [Laravel (PHP) ou Adonois/JS (Node)].
 
